@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="site-header-logo">
+        <h1 class="text-center">
+          Cardiovascular Disease
+        </h1>
+    </div>
+
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 50%;">
+            <div class="card-body">
+              <div class="alert alert-success" role="alert">{{output}}</div>
+                    <form action="{{url_for('classification_form')}}" method="POST" class="form-inline">
+                        <div class="form-group mb-4">
+                            <label for="age" class="sr-only">Age </label>
+                            <input type="number" class="form-control" id="age" name="age" min="1" max="100" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="height" class="sr-only">Height</label>
+                            <input type="number" class="form-control" id="height" name="height" min="1" max="200" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="weight" class="sr-only">Weight</label>
+                            <input type="number" class="form-control" id="weight" name="weight" min="1" max="200" required>
+                        </div>
+                        <div class="form-group mb-4">
+                          <label for="gender" class="sr-only">Gender</label>
+                          <select name="gender" id="gender" class="form-select mb-3" required>
+                              <option value="1">Male</option>
+                              <option value="2">Female</option>
+                          </select>
+                      </div>
+                        <div class="form-group mb-4">
+                            <label for="sysbp" class="sr-only">Systolic blood pressure</label>
+                            <input type="number" class="form-control" id="sysbp" name="sysbp" min="1" max="180" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="diasbp" class="sr-only">Diastolic blood pressure</label>
+                            <input type="number" class="form-control" id="diasbp" name="diasbp" min="1" max="110" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="cholesterol" class="sr-only">Cholesterol</label>
+                            <select name="cholesterol" id="cholesterol" class="form-select mb-3" required>
+                                <option value="1">Normal</option>
+                                <option value="2">Above Normal</option>
+                                <option value="3">Well Above Normal</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="glucose" class="sr-only">Glucose</label>
+                            <select name="glucose" id="glucose" class="form-select mb-3" required>
+                                <option value="1">Normal</option>
+                                <option value="2">Above Normal</option>
+                                <option value="3">Well Above Normal</option>
+                            </select>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <label for="alcohol" class="sr-only">Alcohol</label>
+                                <select name="alcohol" id="alcohol" class="form-select mb-3" required>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="smoking" class="sr-only">Smoking</label>
+                                <select name="smoking" id="smoking" class="form-select mb-3" required>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="physical-activity" class="sr-only">Physical Activity</label>
+                                <select name="physical-activity" id="physical-activity" class="form-select mb-3" required>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p><input type="submit" class="btn btn-primary mb-2" value="Submit"></p>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <div class="row p-4">
+      <div class="card m-auto" style="width: 50%;">
+        <div class="card-body text-center">
+          <img src="{{url_for('static',filename ='images/blood_pressure.jpg')}}"/>
+        </div>
+      </div>
+    </div>
+{% endblock %}

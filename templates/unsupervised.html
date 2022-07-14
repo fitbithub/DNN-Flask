@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="site-header-logo">
+        <h1 class="text-center">
+            Unsupervised Algorithm
+        </h1>
+    </div>
+
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 80%;">
+            <div class="card-body">
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><p><b>Marketing is crucial for the growth and sustainability of retail business.</b></p></li>
+                        <li class="list-group-item"><p><b>One of the key pain point for marketers is to know their customer & identify their needs.</b></p></li>
+                        <li class="list-group-item"><p><b>By understanding the customers, marketers can launch a targeted marketing campaign that is tailored for specific needs.</b></p></li>
+                        <li class="list-group-item"><p><b>If company has extensive data about the customeres available, data science and AI/ML can be applied to be perform market segmentation.</b></p></li>
+                        <li class="list-group-item"><p><b>K-means is unsupervised learning algorithm(clustring) Applied on below data: </b></p></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card m-auto" style="width: 80%;">
+            <h3>APPLY K-MEANS METHOD</h3>
+            <div class="card-body">
+                <div>
+                    <div id="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        var graphs = {{ kmeanGraph | safe}};
+        Plotly.plot("chart", graphs,{});
+    </script>
+{% endblock %}

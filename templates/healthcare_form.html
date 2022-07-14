@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="site-header-logo">
+        <h1 class="text-center">
+            Brain MRI
+        </h1>
+    </div>
+
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 80%;">
+            <div class="card-body">
+                <!-- <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div> -->
+                <form id="#upload-file" method="post"  enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload Image</label>
+                        <input type="file" name="file" class="form-control" accept=".tif .png, .jpg, .jpeg" required>
+                    </div>
+                    <button id="#upload-file-btn" class="btn btn-primary" disabled>Upload</button>
+                </form>
+            </div>
+            <div><img src="#" class="img-thumbnail" id="imagePreview" style="display:none;"/></div>
+            <h2 id="output" style="display:none;"></h2>
+        </div>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#upload-file-btn').click(function() {
+        event.preventDefault();  
+        var form_data = new FormData($('#upload-file')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/dataUpload',
+            data: form_data,
+            contentType: false,
+            processData: false,
+            }).done(function(data){
+                $('#output').text(data.message).show();
+                $('#imagePreview').attr('src', data.image).show();
+            });   
+        });
+    });
+</script>
+{% endblock %}
