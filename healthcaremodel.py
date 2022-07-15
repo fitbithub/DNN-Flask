@@ -5,11 +5,11 @@ from tensorflow.keras.utils import load_img
 from tensorflow.keras.utils import img_to_array
 
 
-with open('resnet-50-MRI.json', 'r') as json_file:
-    json_savedModel= json_file.read()
-# load the model  
-model = tf.keras.models.model_from_json(json_savedModel)
-model.load_weights('weights.hdf5')
+# with open('resnet-50-MRI.json', 'r') as json_file:
+#     json_savedModel= json_file.read()
+# # load the model  
+# model = tf.keras.models.model_from_json(json_savedModel)
+# model.load_weights('weights.hdf5')
 
 
 
